@@ -1,4 +1,8 @@
-export const Button = ({todoText}) => {
+interface buttonProps {
+    todoText: string
+}
+
+export const Button: React.FC<buttonProps> = ({todoText}) => {
 
     return ( 
         <>

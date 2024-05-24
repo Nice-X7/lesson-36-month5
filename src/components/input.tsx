@@ -1,9 +1,21 @@
 import { Button } from "./InputButton"
 import { ClearAll } from "./clearAll"
 
-export const Input = ({setTodoText, todoText, putTodo, todo, setTodo}) => {
+interface Todo {
+    text: string
+    done: boolean
+}
 
-    const handleChangeText = (e) => {
+interface InputProps {
+    todoText: string;
+    setTodoText: React.Dispatch<React.SetStateAction<string>>;
+    putTodo: (todoText: string) => void;
+    setTodo: React.Dispatch<React.SetStateAction<Array<Todo>>>;
+  }
+
+export const Input: React.FC<InputProps> = ({setTodoText, todoText, putTodo, setTodo}) => {
+
+    const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setTodoText(e.target.value)
     }
 
@@ -28,7 +40,6 @@ export const Input = ({setTodoText, todoText, putTodo, todo, setTodo}) => {
                     <Button todoText={todoText}/>
 
                     <ClearAll 
-                    todo={todo} 
                     setTodo={setTodo}
                     />
 

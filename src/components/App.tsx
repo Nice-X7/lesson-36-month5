@@ -1,15 +1,19 @@
 import { useState } from "react"
-import { Header } from "./components/header"
-import { Input } from "./components/input"
-import { Content } from "./components/Content"
+import { Header } from "./header"
+import { Input } from "./input"
+import { Content } from "./Content"
 
+interface Todo {
+  text: string
+  done: boolean
+}
 
-export const App = () => {
+export const App: React.FC = () => {
 
-  const [todo, setTodo] = useState([])
-  const [todoText, setTodoText] = useState("")
+  const [todo, setTodo] = useState<Array<Todo>>([])
+  const [todoText, setTodoText] = useState<string>("")
 
-  const putTodo = (todoText) => {
+  const putTodo = (todoText: string) :void => {
     if (todoText) {
       setTodo([...todo, { text: todoText, done: false }])
     }

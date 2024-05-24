@@ -1,6 +1,16 @@
 import {Button} from "./button"
 
-export const Content = ({todo, setTodo}) => {
+interface Todo {
+    text: string
+    done: boolean
+}
+
+interface contentProps {
+    todo: Todo[]
+    setTodo: React.Dispatch<React.SetStateAction<Todo[]>>;
+}
+
+export const Content: React.FC<contentProps> = ({todo, setTodo}) => {
 
     return (
         <section className="todos">
